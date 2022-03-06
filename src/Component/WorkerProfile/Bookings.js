@@ -18,6 +18,7 @@ function Table() {
       return response.json()
     })
       .then((response) => {
+        console.log(response)
         setItems(response)
       }).catch((error) => { console.warn(error); })
   }
@@ -62,7 +63,7 @@ function Table() {
           <tbody >
             {
               items.map((elem) => {
-                const { id, customer, booking_date, acceptance_date } = elem;
+                const { id, customer, booking_date, acceptance_date, accepted } = elem;
                 let Book = booking_date.substr(0, 10);
                 let Accept = acceptance_date;
                 return (
@@ -73,26 +74,29 @@ function Table() {
                       state: { id: 1 }
                     }}>{customer.user.first_name} {customer.user.last_name}</Link></td>
                     <td>{Book}</td>
-                    {(() => {
-                      if (Accept === null) {
-                        return (
-                          <div>
-                            <td>NOT ACCEPTED</td>
-                          </div>
-                        )
-                      }
-                      else {
-                        return (
-                          <div>
-                            <td>{Accept.substr(0, 10)}</td>
-                          </div>
-                        )
-                      }
-                    })()}
-
+                    {accepted ? (
+                    <td>{Accept.substr(0, 10)}</td>
+                  ) : (
+                    <td>Not Accepted Yet</td>
+                  )}
+                  {accepted ? (
                     <td>
-                      <button className="btn btn-success" type="button" onClick={() => Approved(id)} >&#10004;</button>
+                      <button className="btn btn-danger" type="button">
+                        &#10004;
+                      </button>
                     </td>
+                  ) : (
+                    <td>
+                      <button
+                        className="btn btn-success"
+                        type="button"
+                        onClick={() => Approved(id)}
+                      >
+                        &#10004;
+                      </button>
+                    </td>
+                  )}
+                    
                   </tr>
                 )
               })

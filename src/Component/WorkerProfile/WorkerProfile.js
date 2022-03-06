@@ -121,8 +121,6 @@ function WorkerProfile() {
   }
 
 
-
-
   return (
     <div>
       <Header />

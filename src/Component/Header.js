@@ -53,10 +53,8 @@ function Header() {
                         My Profile
                       </a>
                       <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-
                         <li><Link className="dropdown-item" to="/workerprofile">Profile</Link></li>
                         <li><Link className="dropdown-item" to="/booking">Customer Request</Link></li>
-
                       </ul>
                     </li>
                   </div>
@@ -73,11 +71,9 @@ function Header() {
                     </li>
                   </div>
               }
-              
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About</Link>
               </li>
-
             </ul>
             <form className="d-flex mb-2">
               {localStorage.getItem('user-info') ? <Link style={{ textDecoration: 'none' }}><button className="btn btn-outline-light my-3" type="submit" onClick={logout}>LogOut</button></Link>
@@ -97,7 +93,6 @@ function Header() {
           </div>
         </div>
       </nav>
-
     </div>
   );
 }

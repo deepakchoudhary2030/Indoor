@@ -90,6 +90,10 @@
   background: white;
   border-color: black;
 }
+.profession:focus {
+  background-color:white;
+  color:black;
+}
 .done{
   display: flex;
   flex-wrap: wrap;

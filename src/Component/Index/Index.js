@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Header from '../Header';
 import paint from '../Images/paint.png';
@@ -17,6 +17,7 @@ function Home() {
   const history = useHistory();
   const [pincode, setPincode] = useState(localStorage.getItem('pincode'));
   const [isOpen, setIsOpen] = useState(false);
+  const[loaded,setLoaded]=useState(false);
   localStorage.setItem('pincode', pincode);
 
   const togglePopup = () => {
@@ -26,6 +27,9 @@ function Home() {
     localStorage.clear();
     history.push('/')
   }
+  useEffect(()=>{
+    setLoaded(true);
+  },[])
   return (
     <div >
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top" style={{ height: '5em' }} >
